@@ -25,16 +25,14 @@ MAIN_MENU() {
   esac
 }
 
-RETURN_MENU() {
-  # get customer info
+RETURN_MENU() 
   echo -e "\nWhat's your phone number?"
   read CUSTOMER_PHONE
   CUSTOMER_ID=$($PSQL "SELECT customer_id FROM customers WHERE phone = '$CUSTOMER_PHONE'")
-  # if not found
   if [[ -z $CUSTOMER_ID ]]
   then
-    # gather customer info
-    echo -e "\nI don't have a record for that phone number, what's your name?"
+  
+    echo -e "\nTHere is no record for that phone number, what's your name?"
     read CUSTOMER_NAME
     INSERT_CUSTOMER_RESULT=$($PSQL "INSERT INTO customers(phone, name) VALUES('$CUSTOMER_PHONE', '$CUSTOMER_NAME')")
     CUSTOMER_ID=$($PSQL "SELECT customer_id FROM customers WHERE phone = '$CUSTOMER_PHONE'")
@@ -42,7 +40,7 @@ RETURN_MENU() {
     CUSTOMER_NAME=$($PSQL "SELECT name FROM customers WHERE phone = '$CUSTOMER_PHONE'")
   fi
 
-  # book appointment
+  
   echo -e "\nWhat time would you like your cut, $(echo $CUSTOMER_NAME | sed -E 's/^ *| *$//g')?"
   read SERVICE_TIME
   INSERT_APPOINTMENT_RESULT=$($PSQL "INSERT INTO appointments(customer_id, service_id, time) VALUES($CUSTOMER_ID, $SERVICE_ID_SELECTED, '$SERVICE_TIME')")
