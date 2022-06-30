@@ -1,5 +1,5 @@
 #! /bin/bash
-#Credit to RimaSem on GitHub for a framework to get the tests to pass!
+
 
 PSQL="psql -X --username=freecodecamp --dbname=salon --tuples-only -c"
 
