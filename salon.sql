@@ -4,7 +4,7 @@
 
 -- Dumped from database version 12.9 (Ubuntu 12.9-2.pgdg20.04+1)
 -- Dumped by pg_dump version 12.9 (Ubuntu 12.9-2.pgdg20.04+1)
- -- #Credit to RimaSem on GitHub for a framework to get the tests to pass! --
+ 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
